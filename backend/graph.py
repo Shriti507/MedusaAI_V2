@@ -4,7 +4,7 @@ from state import AgentState
 from nodes.planner import planner_node
 from nodes.search import search_node
 from nodes.retriever import filter_node
-from nodes.summarizer import summarize_node
+from nodes.summarizer import summarizer_node
 from nodes.validator import validator_node
 from nodes.report import report_node
 
@@ -13,7 +13,7 @@ builder = StateGraph(AgentState)
 builder.add_node("planner", planner_node)
 builder.add_node("search", search_node)
 builder.add_node("filter", filter_node)
-builder.add_node("summarize", summarize_node)
+builder.add_node("summarize", summarizer_node)
 builder.add_node("validate", validator_node)
 builder.add_node("report", report_node)
 

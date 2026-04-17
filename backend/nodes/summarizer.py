@@ -1,12 +1,27 @@
 from llm.engine import generate
 
-def summarize_node(state):
+def summarizer_node(state):
     summaries = []
 
     for doc in state["filtered_results"]:
-        text = doc.get("body", "")[:500]
-        prompt = f"Summarize in 3 bullet points:\n{text}"
-        summaries.append(generate(prompt))
+        content = doc["body"]
+
+        content = content.replace("\n", " ")
+        content = content.replace("[", "").replace("]", "")
+        content = content.replace("(", "").replace(")", "")
+
+        content = content[:1000]
+
+        prompt = f"""
+        Summarize the following content in 2-3 clear sentences.
+        Ignore links, references, and metadata.
+
+        Content:
+        {content}
+        """
+
+        summary = generate(prompt)
+        summaries.append(summary)
 
     state["summaries"] = summaries
     return state

@@ -1,15 +1,30 @@
-from duckduckgo_search import DDGS
+from tavily import TavilyClient
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-def search_node(state): 
+client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+
+def search_node(state):
     results = []
 
     try:
-        with DDGS() as ddgs:
-            for q in state["search_queries"]:
-                for r in ddgs.text(q, max_results=3):
-                    results.append(r)
-    except:
-        state["errors"].append("Search failed")
+        for q in state["search_queries"]:
+            response = client.search(
+                query=q,
+                search_depth="basic",
+                max_results=3
+            )
+
+            for r in response["results"]:
+                results.append({
+                    "title": r.get("title"),
+                    "body": r.get("content"),
+                    "href": r.get("url")
+                })
+
+    except Exception as e:
+        state["errors"].append(f"Tavily failed: {str(e)}")
 
     state["results"] = results
     return state
