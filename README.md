@@ -62,42 +62,42 @@ cd project
 
 ---
 
-## Backend Setup
+### 2. Backend Setup
 ```bash
 cd backend
 python -m venv venv
 ```
 
-### Activate Virtual Environment
+#### Activate Virtual Environment
 ```bash
 source venv/bin/activate
 ```
 
-### Install Dependencies
+#### Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run Backend Server
+#### Run Backend Server
 ```bash
 uvicorn main:app --reload
 ```
 
-### Backend runs at:
+#### Backend runs at:
 ```bash
 http://127.0.0.1:8000
 ```
 
 ---
 
-## Frontend Setup (React PWA)
+### 3. Frontend Setup (React PWA)
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-### Frontend runs at:
+#### Frontend runs at:
 ```bash
 http://localhost:3000
 ```
@@ -151,24 +151,23 @@ Export as Markdown
 
 ## Project Structure
 
+```text
 milestone_2/
-│
 ├── backend/
-│   ├── nodes/            # Agent nodes (planner, search, summarizer, etc.)
-│   ├── llm/              # LLM engine
-│   ├── utils/            # Helpers (optional)
-│   ├── exports/          # PDF/Markdown export
-│   ├── state.py          # Shared state
-│   ├── graph.py          # LangGraph workflow
-│   ├── main.py           # FastAPI server
-│   ├── requirements.txt
-│
+│   ├── nodes/
+│   ├── llm/
+│   ├── utils/
+│   ├── exports/
+│   ├── state.py
+│   ├── graph.py
+│   ├── main.py
+│   └── requirements.txt
 ├── frontend/
 │   ├── src/
 │   ├── public/
-│   ├── package.json
-│
+│   └── package.json
 └── README.md
+```
 
 ---
 
