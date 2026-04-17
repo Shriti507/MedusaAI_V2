@@ -156,20 +156,46 @@ Example: Impact of Artificial Intelligence in Healthcare
 ## Project Structure
 
 ```text
-milestone_2/
+MedusaAI_V2/
+│
 ├── backend/
-│   ├── nodes/
-│   ├── llm/
-│   ├── utils/
+│   ├── __pycache__/
 │   ├── exports/
-│   ├── state.py
-│   ├── graph.py
-│   ├── main.py
-│   └── requirements.txt
+│   ├── llm/
+│   │
+│   ├── nodes/
+│   │   ├── __pycache__/
+│   │   ├── __init__.py
+│   │   ├── expand.py        # Query expansion logic
+│   │   ├── filter.py        # Filtering irrelevant/low-quality data
+│   │   ├── followup.py      # Follow-up query generation
+│   │   ├── planner.py       # Planning agent (task decomposition)
+│   │   ├── report.py        # Final report generation
+│   │   ├── retriever.py     # Data retrieval from sources
+│   │   ├── search.py        # Search query execution
+│   │   ├── summarizer.py    # Summarization logic
+│   │   └── validator.py     # Output validation
+│   │
+│   ├── venv/
+│   ├── .env
+│   ├── graph.py             # Agent workflow graph
+│   ├── main.py              # Entry point
+│   ├── requirements.txt
+│   └── state.py             # Shared state across agents
+│
 ├── frontend/
-│   ├── src/
+│   ├── .vite/
 │   ├── public/
-│   └── package.json
+│   ├── src/
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── README.md
+│   └── vite.config.js
+│
+├── .gitignore
 └── README.md
 ```
 
